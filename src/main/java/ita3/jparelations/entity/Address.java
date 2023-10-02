@@ -15,7 +15,7 @@ public class Address {
     private int zip;
     private String city;
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.PERSIST)
     List<Citizen> citizens = new ArrayList();
 
     public Address() {}
