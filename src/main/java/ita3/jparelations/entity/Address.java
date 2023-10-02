@@ -15,13 +15,13 @@ public class Address {
     private int zip;
     private String city;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
     List<Citizen> citizens = new ArrayList();
 
     public Address() {}
 
-    public Address(String street, int zip, String city) {
+    public Address(String street, String city, int zip) {
         this.street = street;
         this.zip = zip;
         this.city = city;
