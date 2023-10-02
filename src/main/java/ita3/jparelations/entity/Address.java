@@ -1,10 +1,10 @@
 package ita3.jparelations.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Address {
@@ -14,6 +14,10 @@ public class Address {
     private String street;
     private int zip;
     private String city;
+
+    @OneToMany
+    @JoinColumn(name = "address_id")
+    List<Citizen> citizens = new ArrayList();
 
     public Address() {}
 
@@ -45,5 +49,9 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public void addCitizen(Citizen citizen){
+        citizens.add(citizen);
     }
 }
