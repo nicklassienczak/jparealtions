@@ -30,9 +30,6 @@ public class DeveloperData implements ApplicationRunner {
         Citizen citizen2 = new Citizen("Hanne", "Wonnegut", "h@b.dk", 234);
         a1.addCitizen(citizen1);
         a1.addCitizen(citizen2);
-        //citizenRepository.save(citizen1);
-        //citizenRepository.save(citizen2);
         addressRepository.save(a1); //Save the address
-
     }
 }

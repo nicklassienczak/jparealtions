@@ -1,9 +1,6 @@
 package ita3.jparelations.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Citizen {
@@ -16,6 +13,17 @@ public class Citizen {
     private String email;
     private int phone;
 
+    @ManyToOne
+    Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public Citizen() {
     }
 
@@ -24,6 +32,14 @@ public class Citizen {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+    }
+
+    public Citizen(String firstName, String lastName, String email, int phone, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 
     public String getFirstName() {
