@@ -26,8 +26,8 @@ public class DeveloperData implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         Address a1 = new Address("Lyngbyvej 1", "Lyngby", 2800);
-        Citizen citizen1 = new Citizen("Kurt", "Wonnegut", "a@b.dk",123);
-        Citizen citizen2 = new Citizen("Hanne", "Wonnegut", "h@b.dk", 234);
+        Citizen citizen1 = new Citizen("Kurt", "Wonnegut", "a@b.dk",123, a1);
+        Citizen citizen2 = new Citizen("Hanne", "Wonnegut", "h@b.dk", 234, a1);
         a1.addCitizen(citizen1);
         a1.addCitizen(citizen2);
         addressRepository.save(a1); //Save the address

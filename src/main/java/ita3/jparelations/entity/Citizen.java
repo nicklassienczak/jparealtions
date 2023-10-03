@@ -13,16 +13,8 @@ public class Citizen {
     private String email;
     private int phone;
 
-    @ManyToOne
+    @ManyToOne  // owner side
     Address address;
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public Citizen() {
     }
@@ -72,5 +64,13 @@ public class Citizen {
 
     public void setPhone(int phone) {
         this.phone = phone;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

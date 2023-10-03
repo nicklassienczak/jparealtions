@@ -15,7 +15,7 @@ public class Address {
     private int zip;
     private String city;
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     List<Citizen> citizens = new ArrayList();
 
     public Address() {}
@@ -52,6 +52,5 @@ public class Address {
 
     public void addCitizen(Citizen citizen){
         citizens.add(citizen);
-        citizen.setAddress(this);
     }
 }
