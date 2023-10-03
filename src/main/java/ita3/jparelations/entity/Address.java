@@ -15,7 +15,7 @@ public class Address {
     private int zip;
     private String city;
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Citizen> citizens = new ArrayList();
 
     public Address() {}
@@ -24,6 +24,10 @@ public class Address {
         this.street = street;
         this.zip = zip;
         this.city = city;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getStreet() {
@@ -52,5 +56,9 @@ public class Address {
 
     public void addCitizen(Citizen citizen){
         citizens.add(citizen);
+    }
+
+    public List<Citizen> getCitizens() {
+        return citizens;
     }
 }

@@ -5,6 +5,7 @@ import ita3.jparelations.entity.Citizen;
 import ita3.jparelations.repository.IAddressRepository;
 import ita3.jparelations.repository.ICitizenRepository;
 import ita3.jparelations.repository.ITownRepository;
+import ita3.jparelations.service.AddressService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +16,13 @@ public class DeveloperData implements ApplicationRunner {
     IAddressRepository addressRepository;
     ICitizenRepository citizenRepository;
     ITownRepository townRepository;
+    AddressService addressService;
 
-    public DeveloperData(IAddressRepository address, ICitizenRepository citizen, ITownRepository town) {
+    public DeveloperData(IAddressRepository address, ICitizenRepository citizen, ITownRepository town, AddressService addressService) {
         this.addressRepository = address;
         this.citizenRepository = citizen;
         this.townRepository = town;
+        this.addressService = addressService;
     }
 
     @Override
@@ -31,5 +34,14 @@ public class DeveloperData implements ApplicationRunner {
         a1.addCitizen(citizen1);
         a1.addCitizen(citizen2);
         addressRepository.save(a1); //Save the address
+        System.out.println(a1.getId());
+        addressService.printFullAddressInfo(a1.getId(), true);
+
+/*      System.out.println("------- Select statements starts here ------------");
+        Address address_1 = addressRepository.findById(a1.getId()).get();
+        System.out.println(address_1.getStreet());
+        System.out.println("Press Enter to continue");
+        System.in.read(); //This will block so you have time to read the DEBUG statements**
+        System.out.println("Citizens: " + address_1.getCitizens().size());  */
     }
 }
