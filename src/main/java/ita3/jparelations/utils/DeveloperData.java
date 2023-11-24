@@ -31,8 +31,10 @@ public class DeveloperData implements ApplicationRunner {
         Address a1 = new Address("Lyngbyvej 1", "Lyngby", 2800);
         Citizen citizen1 = new Citizen("Kurt", "Wonnegut", "a@b.dk",123, a1);
         Citizen citizen2 = new Citizen("Hanne", "Wonnegut", "h@b.dk", 234, a1);
+        Citizen citizen3 = new Citizen("Hanna", "Wonnegut", "h@b.dk", 234, a1);
         a1.addCitizen(citizen1);
         a1.addCitizen(citizen2);
+        a1.addCitizen(citizen3);
         addressRepository.save(a1); //Save the address
         System.out.println(a1.getId());
         addressService.printFullAddressInfo(a1.getId(), true);
